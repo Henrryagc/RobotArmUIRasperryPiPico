@@ -11,6 +11,9 @@ byte servo = 0;
 
 byte servos = 0;
 
+byte uno = 1;
+byte dos = 2
+
 void setup() {
     Serial.begin(9600);
     pwm1.begin();
@@ -19,32 +22,17 @@ void setup() {
 }
 
 void loop() {    
-
     if(Serial.available()) {
-        Serial.println(Serial.available());
+        // Serial.println(Serial.available());
         data = Serial.readString();
         gripper(data.toInt());
-        Serial.println(data);
-
+        
         int position = data.substring(0, 1).toInt();
         int signal = data.substring(2).toInt();
 
-        robotMovement(position, signal)
+        Serial.println(data);
+        // robotMovement(position, signal);
     }
-       // gripper(data.toInt());
-    /*for (int pulse = servoMIN; pulse < servoMAX; pulse++) {
-    pwm1.setPWM(servo, 0, pulse);
-    Serial.println(servo);
-  }
-  delay(100);*/
-    /*if(Serial.available()) {
-        data = Serial.readString();
-       // gripper(data.toInt());
-          
-        pwm1.setPWM(0, 0, data.toInt());
-
-        Serial.println(data); 
-    }*/
 
     moverServos();
 }
@@ -54,7 +42,7 @@ void gripper(int number) {
     switch (number){
     case 1:
         digitalWrite(13, HIGH);
-        pwm1.setPWM(0, 0, 250);  
+        pwm1.setPWM(0, 0, 250);
         break;
     case 2:
         digitalWrite(13, LOW);
@@ -67,7 +55,7 @@ void gripper(int number) {
 }
 
 void moverServos(){
-        for (int angulo = 150; angulo < 350; angulo+=10)
+    for (int angulo = 150; angulo < 350; angulo+=10)
     {        
         if (servos!=1)  
         {
@@ -98,33 +86,35 @@ void robotMovement(int position, int signal) {
     switch (position)
     {
     case 5:
-        // move gripper
-        pwm1.setPWM(5, 0, signal);
+        // move gripper        
+        pwm1.setPWM(6, 0, signal);
         break;
     
     case 4:
-        pwm1.setPWM(4, 0, signal);
+        pwm1.setPWM(5, 0, signal);
         // move wrist
         break;
 
     case 3:
         // move arm top
-        pwm1.setPWM(3, 0, signal);
+        pwm1.setPWM(4, 0, signal);
         break;
 
     case 2:
         // move arm bottom
-        pwm1.setPWM(2, 0, signal);
+        pwm1.setPWM(3, 0, signal);
         break;
 
     case 1:
         // move shoulders
-        pwm1.setPWM(1, 0, signal);
+        pwm1.setPWM(uno, 0, signal);
+        pwm1.setPWM(dos, 0, signal);
         break;
     
     case 0:
     // move base
-        pwm1.setPWM(0, 0, signal);
+        byte cero = 0; 
+        pwm1.setPWM(cero, 0, signal);
         break;
 
     default:

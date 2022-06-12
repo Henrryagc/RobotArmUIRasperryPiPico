@@ -13,6 +13,6 @@
 1. install python 3.6+
 2. install arduino IDE
 3. install visual studio code or vscodium
-4. install c/c++ compiler 'it's for programming in vsc, it's not necesary for arduino ide'.
+4. install c/c++ compiler "it's only for programming in vscode,it's not necesary for arduino ide".
 5. create an enviroment to develop for python
 6. install dependencies

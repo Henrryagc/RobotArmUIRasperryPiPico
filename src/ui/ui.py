@@ -9,12 +9,12 @@ class MyApp(qtw.QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Mi app Robot Arm")
-        self.button = qtw.QPushButton("Click me!")        
+        #self.button = qtw.QPushButton("Click me!")        
         self.layout = qtw.QVBoxLayout(self)
 
-        self.layout.addWidget(self.button)
+        #self.layout.addWidget(self.button)
 
-        self.button.clicked.connect(self.magic)
+        #self.button.clicked.connect(self.magic)
 
         # Pinzas
         self.init_gripper()
@@ -33,15 +33,15 @@ class MyApp(qtw.QWidget):
         self.init_base()
 
 
-    @QtCore.Slot()
+    """ @QtCore.Slot()
     def magic(self):
-        self.text1.setText(random.choice(self.hello))                                     
+        self.text1.setText(random.choice(self.hello))   """                                   
 
     def init_gripper(self):
         self.slider1 = qtw.QSlider(Qt.Horizontal)        
         self.text1 = qtw.QLabel("Pinzas", alignment=QtCore.Qt.AlignCenter)
         self.slider1.valueChanged.connect(self.changed_gripper) 
-        self.slider1.setRange(20, 60)        
+        self.slider1.setRange(180, 300)        
         self.slider1.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider1.setTickInterval(5)
         self.slider1.setPageStep(5)        
@@ -53,7 +53,7 @@ class MyApp(qtw.QWidget):
         self.slider2 = qtw.QSlider(Qt.Horizontal)        
         self.text2 = qtw.QLabel("Muñeca", alignment=QtCore.Qt.AlignCenter)
         self.slider2.valueChanged.connect(self.changed_wrist) # command=uic.wrist
-        self.slider2.setRange(5, 180)        
+        self.slider2.setRange(180, 600)        
         self.slider2.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider2.setTickInterval(5)
         self.slider2.setPageStep(5)
@@ -65,7 +65,7 @@ class MyApp(qtw.QWidget):
         self.slider3 = qtw.QSlider(Qt.Horizontal)        
         self.text3 = qtw.QLabel("Brazo Arriba", alignment=QtCore.Qt.AlignCenter)
         self.slider3.valueChanged.connect(self.changed_arm_top) # command=uic.arm_top
-        self.slider3.setRange(0, 180)        
+        self.slider3.setRange(180, 600)        
         self.slider3.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider3.setTickInterval(5)
         self.slider3.setPageStep(5)
@@ -77,7 +77,7 @@ class MyApp(qtw.QWidget):
         self.slider4 = qtw.QSlider(Qt.Horizontal)        
         self.text4 = qtw.QLabel("Brazo Abajo", alignment=QtCore.Qt.AlignCenter)
         self.slider4.valueChanged.connect(self.changed_arm_bottom) # command=uic.arm_bottom
-        self.slider4.setRange(5, 180)        
+        self.slider4.setRange(180, 600)        
         self.slider4.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider4.setTickInterval(5)
         self.slider4.setPageStep(5)
@@ -89,7 +89,7 @@ class MyApp(qtw.QWidget):
         self.slider5 = qtw.QSlider(Qt.Horizontal)        
         self.text5 = qtw.QLabel("Hombros", alignment=QtCore.Qt.AlignCenter)
         self.slider5.valueChanged.connect(self.changed_shoulders) # command=uic.shoulders
-        self.slider5.setRange(20, 180)        
+        self.slider5.setRange(180, 600)        
         self.slider5.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider5.setTickInterval(5)
         self.slider5.setPageStep(5)
@@ -101,7 +101,7 @@ class MyApp(qtw.QWidget):
         self.slider6 = qtw.QSlider(Qt.Horizontal)        
         self.text6 = qtw.QLabel("Base", alignment=QtCore.Qt.AlignCenter)
         self.slider6.valueChanged.connect(self.changed_base) # command=uic.base
-        self.slider6.setRange(5, 180)        
+        self.slider6.setRange(180, 600)        
         self.slider6.setTickPosition(qtw.QSlider.TicksBelow)
         self.slider6.setTickInterval(5)
         self.slider6.setPageStep(5)
