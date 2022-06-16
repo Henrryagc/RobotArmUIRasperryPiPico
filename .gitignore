@@ -6,6 +6,7 @@
 brazoenv/
 src/my_mediapipe
 src/my_qt
+src/camera
 app_qt.py
 src/pca
 src/robotic_arm_opencv_python
@@ -22,6 +23,7 @@ templates
 main.cpp
 main.exe
 pyscript.py
+
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

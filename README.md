@@ -7,6 +7,7 @@
     arduino IDE
     pyserial
     pyside6
+    flet
 ```
 
 ## Installation
@@ -16,3 +17,4 @@
 4. install c/c++ compiler "it's only for programming in vscode,it's not necesary for arduino ide".
 5. create an enviroment to develop for python
 6. install dependencies
+7. run the project

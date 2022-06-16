@@ -3,110 +3,112 @@ from PySide6.QtCore import Qt
 import random
 from PySide6 import QtCore, QtWidgets as qtw, QtGui
 
+
 import src.ui.ui_comands as uic
 
 class MyApp(qtw.QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Mi app Robot Arm")
-        #self.button = qtw.QPushButton("Click me!")        
-        self.layout = qtw.QVBoxLayout(self)
+        self.setWindowTitle("ROBOT ARM APP")
+        self.layout = qtw.QGridLayout()
+        self.layout.setContentsMargins(25, 25, 25, 25)
+        self.layout.setVerticalSpacing(35)
 
-        #self.layout.addWidget(self.button)
-
-        #self.button.clicked.connect(self.magic)
+        title = qtw.QLabel("CONTROL BRAZO ROBÓTICO", )                
+        self.layout.addWidget(title, 0, 0, 1, 2)
 
         # Pinzas
-        self.init_gripper()
+        self.create_slider_gripper()
 
         # Muñeca
-        self.init_wrist()
+        self.create_slider_wrist()
 
         # Brazos        
-        self.init_arm_top()
-        self.init_arm_bottom()
+        self.create_slider_arm_top()
+        self.create_slider_arm_bottom()
         
         # Hombros
-        self.init_shoulders()
+        self.create_slider_shoulders()
 
         # Base 
-        self.init_base()
+        self.create_slider_base()        
 
+        self.setLayout(self.layout)
 
     """ @QtCore.Slot()
     def magic(self):
         self.text1.setText(random.choice(self.hello))   """                                   
 
-    def init_gripper(self):
-        self.slider1 = qtw.QSlider(Qt.Horizontal)        
-        self.text1 = qtw.QLabel("Pinzas", alignment=QtCore.Qt.AlignCenter)
+    def create_slider_gripper(self):        
+        self.slider1 = qtw.QSlider(Qt.Horizontal)                
+        self.text1 = qtw.QLabel("Pinzas", )
         self.slider1.valueChanged.connect(self.changed_gripper) 
         self.slider1.setRange(180, 300)        
         self.slider1.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider1.setTickInterval(5)
-        self.slider1.setPageStep(5)        
-        self.layout.addWidget(self.text1)
-        self.layout.addWidget(self.slider1)        
+        self.slider1.setTickInterval(50)
+        self.slider1.setPageStep(10)
+        self.layout.addWidget(self.slider1, 1, 0)
+        self.layout.addWidget(self.text1, 1, 1)        
 
 
-    def init_wrist(self):
+    def create_slider_wrist(self):
         self.slider2 = qtw.QSlider(Qt.Horizontal)        
-        self.text2 = qtw.QLabel("Muñeca", alignment=QtCore.Qt.AlignCenter)
+        self.text2 = qtw.QLabel("Muñeca", )
         self.slider2.valueChanged.connect(self.changed_wrist) # command=uic.wrist
         self.slider2.setRange(180, 600)        
         self.slider2.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider2.setTickInterval(5)
-        self.slider2.setPageStep(5)
-        self.layout.addWidget(self.text2)
+        self.slider2.setTickInterval(50)
+        self.slider2.setPageStep(10)
         self.layout.addWidget(self.slider2)
+        self.layout.addWidget(self.text2)
 
 
-    def init_arm_top(self):
+    def create_slider_arm_top(self):
         self.slider3 = qtw.QSlider(Qt.Horizontal)        
-        self.text3 = qtw.QLabel("Brazo Arriba", alignment=QtCore.Qt.AlignCenter)
+        self.text3 = qtw.QLabel("Brazo Arriba", )
         self.slider3.valueChanged.connect(self.changed_arm_top) # command=uic.arm_top
         self.slider3.setRange(180, 600)        
         self.slider3.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider3.setTickInterval(5)
-        self.slider3.setPageStep(5)
-        self.layout.addWidget(self.text3)
+        self.slider3.setTickInterval(50)
+        self.slider3.setPageStep(10)
         self.layout.addWidget(self.slider3)
+        self.layout.addWidget(self.text3)
 
 
-    def init_arm_bottom(self):
+    def create_slider_arm_bottom(self):
         self.slider4 = qtw.QSlider(Qt.Horizontal)        
-        self.text4 = qtw.QLabel("Brazo Abajo", alignment=QtCore.Qt.AlignCenter)
+        self.text4 = qtw.QLabel("Brazo Abajo", )
         self.slider4.valueChanged.connect(self.changed_arm_bottom) # command=uic.arm_bottom
         self.slider4.setRange(180, 600)        
         self.slider4.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider4.setTickInterval(5)
-        self.slider4.setPageStep(5)
-        self.layout.addWidget(self.text4)
+        self.slider4.setTickInterval(50)
+        self.slider4.setPageStep(10)
         self.layout.addWidget(self.slider4)
+        self.layout.addWidget(self.text4)
 
 
-    def init_shoulders(self):
+    def create_slider_shoulders(self):
         self.slider5 = qtw.QSlider(Qt.Horizontal)        
-        self.text5 = qtw.QLabel("Hombros", alignment=QtCore.Qt.AlignCenter)
+        self.text5 = qtw.QLabel("Hombros", )
         self.slider5.valueChanged.connect(self.changed_shoulders) # command=uic.shoulders
         self.slider5.setRange(180, 600)        
         self.slider5.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider5.setTickInterval(5)
-        self.slider5.setPageStep(5)
-        self.layout.addWidget(self.text5)
+        self.slider5.setTickInterval(50)
+        self.slider5.setPageStep(10)
         self.layout.addWidget(self.slider5)
+        self.layout.addWidget(self.text5)
 
 
-    def init_base(self):
+    def create_slider_base(self):
         self.slider6 = qtw.QSlider(Qt.Horizontal)        
-        self.text6 = qtw.QLabel("Base", alignment=QtCore.Qt.AlignCenter)
+        self.text6 = qtw.QLabel("Base")
         self.slider6.valueChanged.connect(self.changed_base) # command=uic.base
         self.slider6.setRange(180, 600)        
         self.slider6.setTickPosition(qtw.QSlider.TicksBelow)
-        self.slider6.setTickInterval(5)
-        self.slider6.setPageStep(5)
-        self.layout.addWidget(self.text6)
+        self.slider6.setTickInterval(50)
+        self.slider6.setPageStep(10)
         self.layout.addWidget(self.slider6)
+        self.layout.addWidget(self.text6)
 
 
 ####  On change value
@@ -145,6 +147,6 @@ class App:
     def __init__(self) -> None:            
         app = qtw.QApplication(sys.argv)
         widget = MyApp()
-        widget.resize(300, 600)
+        #widget.resize(300, 600)
         widget.show()
         sys.exit(app.exec())
