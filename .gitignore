@@ -23,8 +23,8 @@ templates
 main.cpp
 main.exe
 pyscript.py
-
-
+*.csv
+/notebooks/regression.ipynb
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
