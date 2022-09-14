@@ -38,7 +38,7 @@ def video_feed():
 def send_data():
     value =  request.form['group1'];    
     print(value)
-    return redirect(url_for("/")) 
+    return ("ok") 
 
 
 python_data = {

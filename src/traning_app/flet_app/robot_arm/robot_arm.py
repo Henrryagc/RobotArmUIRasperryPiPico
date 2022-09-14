@@ -84,5 +84,5 @@ class RobotArm:
 
     def __encode_data(self, robot_part: int, position: int) -> bytes:
         print(f'ENCODE DATA {robot_part},{position}'.encode('UTF-8'))
-        return f'{robot_part},{position}'.encode('UTF-8')
+        return f'{int(robot_part)},{int(position)}'.encode('UTF-8')
 

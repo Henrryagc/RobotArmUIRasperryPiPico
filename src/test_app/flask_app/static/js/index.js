@@ -12,10 +12,9 @@ function getvalues() {
 } */
 
 $(function() {    
-    $('#button').click(function() {
-        console.log('print algo')
+    $('#button-move').click(function() {        
         $.ajax({
-            url: '/signUpUser',
+            url: '/send_data',
             data: $('form').serialize(),
             type: 'POST',
             success: function(response) {
