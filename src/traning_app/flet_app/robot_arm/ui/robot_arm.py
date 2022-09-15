@@ -3,7 +3,7 @@ from time import sleep
 import serial
 
 
-class RobotArm:
+class RobotArm():
 
     def __init__(self) -> None:
         self.ROBOT_GRIPPER = 5

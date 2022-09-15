@@ -1,4 +1,4 @@
-import src.robot_arm.robot_arm as ra
+from .robot_arm import RobotArm
 
 
 def init_arm():    
@@ -41,4 +41,4 @@ def base(position: int):
     robot.move_base(position=position)
 
 
-robot = ra.RobotArm()
+robot = RobotArm()

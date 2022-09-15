@@ -6,7 +6,7 @@ import cv2
 from PIL import Image as pilImage, ImageTk
 import os
 import csv
-import src.ui.ui_comands as uic
+from robot_arm.ui import ui_comands as uic
 
 
 def main(page: Page):
